@@ -4,9 +4,9 @@ const cron = require('node-cron');
 
 let dayCnt = 0;
 
-cron.schedule('0 0 2 * * *', () => {
+cron.schedule('0 0 8 * * *', () => {
     dayCnt++;
-    fs.appendFile('test.js', `//Day ${dayCnt}`, (err) => {
+    fs.appendFile('main.js', `//Day ${dayCnt}`, (err) => {
 	if (err)
 	    throw err;
 	else{
@@ -15,12 +15,12 @@ cron.schedule('0 0 2 * * *', () => {
 		    console.log(`Day${dayCnt}: ${stderr}`);
 		    return;
 		}else{
-		    exec('git commit -m Day:${dayCnt}. ', (error,stdout,stderr) =>{
+		    exec('git commit -m Day:${dayCnt}', (error,stdout,stderr) =>{
 			if(error){
 			    console.log(`Day${dayCnt}:error: ${stderr}`);
 			    return;
 			}else{
-		            exec('git push origin master . ', (error,stdout,stderr) =>{
+		            exec('git push origin master', (error,stdout,stderr) =>{
 				if(error){
 				    console.log(`Day${dayCnt}:error: ${stderr}`);
 				    return;
