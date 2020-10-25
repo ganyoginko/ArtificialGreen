@@ -2,9 +2,9 @@ const  {exec}  = require('child_process')
 const fs = require('fs');
 const cron = require('node-cron');
 
-let dayCnt = 1;
+let dayCnt = 2;
 
-cron.schedule('0 0 8 * * *', () => {
+cron.schedule('* * * * * *', () => {
     dayCnt++;
     fs.appendFile('main.js', `//Day ${dayCnt}`, (err) => {
 	if (err)
@@ -36,3 +36,4 @@ cron.schedule('0 0 8 * * *', () => {
     });
 });
 //Day 2
+//Day 3
